@@ -27,3 +27,21 @@ myList.append(55) # Add to the end
 newList = [11, 12, 13, 14]
 myList.extend(newList) # Add all elements of newList to myList
 print(myList)
+
+# Slice/Delete
+
+myList2 = ['a', 'b', 'c', 'd', 'e', 'f']
+print(myList2[0:2]) # 0 to 1
+print(myList2[1:]) # 1 to end
+print(myList2[:3]) # 0 to 2
+print(myList2[:]) # All
+
+myList2.pop(1) # Remove element at index 1
+print(myList2.pop()) # Remove and return last element
+print(myList2)
+
+del myList2[2:4] # Remove elements from index 2 to 3
+print(myList2)
+
+myList2.remove('c') # Remove element 'c'
+print(myList2)
