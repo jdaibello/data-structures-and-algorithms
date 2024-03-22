@@ -106,3 +106,14 @@ delimiter = 'a'
 i = h.split(delimiter) # Split by delimiter
 print(i)
 print(delimiter.join(i)) # Join by delimiter
+
+# List comprehension
+
+prevList = [1, 2, 3]
+newList = [i * 2 for i in prevList]
+print(prevList)
+print(newList)
+
+language = 'Python'
+newList2 = [letter for letter in language]
+print(newList2)
