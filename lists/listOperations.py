@@ -117,3 +117,25 @@ print(newList)
 language = 'Python'
 newList2 = [letter for letter in language]
 print(newList2)
+
+def getNumber(number):
+    return number if number > 0 else 'negative number'
+
+prevList2 = [-1, 10, -20, 2, -90, 60, 45, 20]
+newList3 = [number for number in prevList2 if number > 0]
+print(newList3)
+
+newList4 = [number * number for number in prevList2 if number < 0]
+print(newList4)
+
+newList5 = [getNumber(number) for number in prevList2]
+print(newList5)
+
+sentence = 'My name is João'
+
+def isConsonant(letter):
+    vowels = 'aeiou'
+    return letter.isalpha() and letter.lower() not in vowels
+
+consonants = [i for i in sentence if isConsonant(i)]
+print(consonants)
