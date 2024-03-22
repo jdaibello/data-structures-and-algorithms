@@ -94,3 +94,15 @@ while True:
 
 average = sum(myList4) / len(myList4)
 print(f'Average: {average}')
+
+# String and Lists
+
+f = 'spam'
+g = list(f)
+print(g)
+
+h = 'spam-spam1-spam2'
+delimiter = 'a'
+i = h.split(delimiter) # Split by delimiter
+print(i)
+print(delimiter.join(i)) # Join by delimiter
