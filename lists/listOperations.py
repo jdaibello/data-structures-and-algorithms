@@ -66,3 +66,31 @@ def linearSearch(list, target):
     return -1
 
 print(linearSearch(myList3, target))
+
+# List operations / functions
+
+a = [1, 2, 3]
+b = [4, 5, 6]
+c = a + b # Concatenation
+print(c)
+
+d = [0, 1]
+d = d * 4 # Repetition
+print(d)
+
+e = [0, 1, 2, 3, 4, 5, 6]
+print(len(e)) # Length
+print(max(e)) # Highest value
+print(min(e)) # Lowest value
+print(sum(e)) # Sum of all elements
+print(sum(e) / len(e)) # Average
+
+myList4 = []
+while True:
+    inp = input('Enter a number: ')
+    if inp == 'done': break
+    value = float(inp)
+    myList4.append(value)
+
+average = sum(myList4) / len(myList4)
+print(f'Average: {average}')
