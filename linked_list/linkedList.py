@@ -23,8 +23,25 @@ class LinkedList:
 
         return self
 
+    def __str__(self):
+        tempNode = self.head
+        result = ''
+
+        while tempNode is not None:
+            result += f'{tempNode.value}'
+
+            if tempNode.next is not None:
+                result += ' -> '
+
+            tempNode = tempNode.next
+        return result
+
 newLinkedList = LinkedList()
 newLinkedList.append(10)
 newLinkedList.append(20)
+newLinkedList.append(30)
+
+print(newLinkedList)
 print(newLinkedList.head.value)
 print(newLinkedList.tail.value)
+print(newLinkedList.length)
