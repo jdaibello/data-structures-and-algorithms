@@ -3,5 +3,12 @@ class Node:
         self.value = value
         self.next = None
 
-newNode = Node(10)
-print(newNode)
+class LinkedList:
+    def __init__(self, value):
+        newNode = Node(value)
+        self.head = newNode
+        self.tail = newNode
+        self.length = 1
+
+newLinkedList = LinkedList(10)
+print(newLinkedList.head.value)
