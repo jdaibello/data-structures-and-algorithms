@@ -80,3 +80,20 @@ print(myDict2.values()) # Returns a list of dictionary values
 newDict2 = {'a': 1, 'b': 2, 'c': 3}
 myDict2.update(newDict2)
 print(myDict2) # Updates the dictionary with other dictionary
+
+# Dictionary operations
+
+myDict3 = {
+    3: 'three',
+    5: 'five',
+    9: 'nine',
+    2: 'two',
+    1: 'one',
+    4: 'four'
+}
+
+print('ten' not in myDict3.values()) # Check if value not exists in dictionary
+print(len(myDict3)) # Length of dictionary
+print(all(myDict3)) # Returns True if all keys of dictionary are True
+print(any(myDict3)) # Returns True if any key of dictionary is True
+print(sorted(myDict3)) # Returns a new sorted list of keys in dictionary
