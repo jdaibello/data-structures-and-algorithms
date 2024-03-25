@@ -14,3 +14,10 @@ print(engSp2)
 
 engSpList = [('one', 'uno'), ('two', 'dos'), ('three', 'tres')]
 print(dict(engSpList))
+
+# Update / add elements in dictionary
+
+myDict = {'name': 'Jack', 'age': 26}
+myDict['name'] = 'John'
+myDict['address'] = 'London'
+print(myDict)
