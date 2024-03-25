@@ -1,3 +1,5 @@
+import random
+
 # Creating Dictionary
 
 myDict = dict()
@@ -97,3 +99,14 @@ print(len(myDict3)) # Length of dictionary
 print(all(myDict3)) # Returns True if all keys of dictionary are True
 print(any(myDict3)) # Returns True if any key of dictionary is True
 print(sorted(myDict3)) # Returns a new sorted list of keys in dictionary
+
+
+# Dictionary comprehension
+
+cityNames = ['Paris', 'London', 'Rome', 'Berlin', 'Madrid']
+
+cityTemps = {city: random.randint(20, 30) for city in cityNames}
+print(cityTemps)
+
+above25 = {city: temp for (city, temp) in cityTemps.items() if temp > 25}
+print(above25)
