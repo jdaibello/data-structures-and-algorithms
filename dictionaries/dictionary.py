@@ -21,3 +21,11 @@ myDict = {'name': 'Jack', 'age': 26}
 myDict['name'] = 'John'
 myDict['address'] = 'London'
 print(myDict)
+
+# Traverse dictionary
+
+def traverseDict(dict):
+    for key in dict:
+        print(key, dict[key])
+
+traverseDict(myDict)
