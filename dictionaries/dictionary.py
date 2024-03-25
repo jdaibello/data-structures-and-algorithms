@@ -29,3 +29,14 @@ def traverseDict(dict):
         print(key, dict[key])
 
 traverseDict(myDict)
+
+# Search value in dictionary
+
+def searchDict(dict, value):
+    for key in dict:
+        if dict[key] == value:
+            return key, value
+
+    return 'The value does not exist'
+
+print(searchDict(myDict, 'John'))
