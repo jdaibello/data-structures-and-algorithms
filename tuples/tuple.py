@@ -33,3 +33,17 @@ def searchTuple(tuple, element):
 
 print(searchTuple(newTuple, 'c')) # The c is at index 2
 print(searchTuple(newTuple, 'f')) # The element was not found
+
+# Tuple Operations/Functions
+
+myTuple = (1, 2, 3, 4, 5)
+myTuple2 = (1, 2, 6, 9, 8, 7)
+
+print(myTuple + myTuple2) # (1, 2, 3, 4, 5, 1, 2, 6, 9, 8, 7)
+print(myTuple * 4) # (1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5)
+print(4 in myTuple) # True
+print(myTuple.count(2)) # 1
+print(myTuple.index(1)) # 0
+print(len(myTuple)) # 5
+print(max(myTuple2)) # 9
+print(tuple([1, 2, 3, 4])) # (1, 2, 3, 4)
