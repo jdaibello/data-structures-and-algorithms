@@ -100,6 +100,23 @@ class LinkedList:
 
         return False
 
+    def popFirst(self):
+        if self.length == 0:
+            return None
+
+        poppedNode = self.head
+
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+        else:
+            self.head = self.head.next
+            poppedNode.next = None
+
+        self.length -= 1
+
+        return poppedNode
+
     def __str__(self):
         tempNode = self.head
         result = ''
@@ -134,4 +151,6 @@ print(newLinkedList.search(30))
 print(newLinkedList.get(2).value)
 print(newLinkedList)
 print(newLinkedList.setValue(2, 50))
+print(newLinkedList)
+print(newLinkedList.popFirst())
 print(newLinkedList)
