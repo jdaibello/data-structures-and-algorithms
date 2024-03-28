@@ -137,6 +137,24 @@ class LinkedList:
 
             return poppedNode
 
+    def remove(self, index):
+        if self.head is None or index < 0 or index >= self.length:
+            return None
+
+        if index == 0:
+            return self.popFirst()
+
+        if index == self.length - 1 or index == -1:
+            return self.pop()
+
+        prevNode = self.get(index - 1)
+        poddedNode = prevNode.next
+        prevNode.next = poddedNode.next
+        poddedNode.next = None
+        self.length -= 1
+
+        return poddedNode.value
+
     def __str__(self):
         tempNode = self.head
         result = ''
@@ -175,4 +193,6 @@ print(newLinkedList)
 print(newLinkedList.popFirst())
 print(newLinkedList)
 print(newLinkedList.pop())
+print(newLinkedList)
+print(newLinkedList.remove(1))
 print(newLinkedList)
