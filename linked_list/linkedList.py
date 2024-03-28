@@ -21,7 +21,17 @@ class LinkedList:
 
         self.length += 1
 
-        return self
+    def prepend(self, value):
+        newNode = Node(value)
+
+        if self.head is None:
+            self.head = newNode
+            self.tail = newNode
+        else:
+            newNode.next = self.head
+            self.head = newNode
+
+        self.length += 1
 
     def __str__(self):
         tempNode = self.head
@@ -37,6 +47,7 @@ class LinkedList:
         return result
 
 newLinkedList = LinkedList()
+
 newLinkedList.append(10)
 newLinkedList.append(20)
 newLinkedList.append(30)
@@ -45,3 +56,6 @@ print(newLinkedList)
 print(newLinkedList.head.value)
 print(newLinkedList.tail.value)
 print(newLinkedList.length)
+
+newLinkedList.prepend(40)
+print(newLinkedList)
