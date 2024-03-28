@@ -33,6 +33,30 @@ class LinkedList:
 
         self.length += 1
 
+    def insert(self, index, value):
+        newNode = Node(value)
+
+        if index < 0 or index > self.length:
+            return False
+
+        if self.length == 0:
+            self.head = newNode
+            self.tail = newNode
+        elif index == 0:
+            newNode.next = self.head
+            self.head = newNode
+        else:
+            tempNode = self.head
+
+            for _ in range(index - 1):
+                tempNode = tempNode.next
+
+            newNode.next = tempNode.next
+            tempNode.next = newNode
+            self.length += 1
+
+            return True
+
     def __str__(self):
         tempNode = self.head
         result = ''
@@ -58,4 +82,7 @@ print(newLinkedList.tail.value)
 print(newLinkedList.length)
 
 newLinkedList.prepend(40)
+print(newLinkedList)
+
+newLinkedList.insert(0, 50)
 print(newLinkedList)
