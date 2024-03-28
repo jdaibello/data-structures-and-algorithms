@@ -77,6 +77,20 @@ class LinkedList:
 
         return -1
 
+    def get(self, index):
+        if index == -1:
+            return self.tail.value
+
+        if index < -1 or index >= self.length:
+            return None
+
+        current = self.head
+
+        for _ in range(index):
+            current = current.next
+
+        return current.value
+
     def __str__(self):
         tempNode = self.head
         result = ''
@@ -108,3 +122,4 @@ newLinkedList.insert(0, 50)
 print(newLinkedList)
 newLinkedList.traverse()
 print(newLinkedList.search(30))
+print(newLinkedList.get(2))
