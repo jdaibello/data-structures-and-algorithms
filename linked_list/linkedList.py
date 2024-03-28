@@ -117,6 +117,26 @@ class LinkedList:
 
         return poppedNode
 
+    def pop(self):
+        if self.length == 0:
+            return None
+
+        if self.length == 1:
+            return self.popFirst()
+
+        else:
+            poppedNode = self.tail
+            temp = self.head
+
+            while temp.next != self.tail:
+                temp = temp.next
+
+            temp.next = None
+            self.tail = temp
+            self.length -= 1
+
+            return poppedNode
+
     def __str__(self):
         tempNode = self.head
         result = ''
@@ -153,4 +173,6 @@ print(newLinkedList)
 print(newLinkedList.setValue(2, 50))
 print(newLinkedList)
 print(newLinkedList.popFirst())
+print(newLinkedList)
+print(newLinkedList.pop())
 print(newLinkedList)
