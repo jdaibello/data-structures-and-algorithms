@@ -155,6 +155,11 @@ class LinkedList:
 
         return poddedNode.value
 
+    def deleteAll(self):
+        self.head = None
+        self.tail = None
+        self.length = 0
+
     def __str__(self):
         tempNode = self.head
         result = ''
@@ -196,3 +201,4 @@ print(newLinkedList.pop())
 print(newLinkedList)
 print(newLinkedList.remove(1))
 print(newLinkedList)
+print(newLinkedList.deleteAll())
