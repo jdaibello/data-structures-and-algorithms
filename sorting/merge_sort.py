@@ -1,5 +1,5 @@
 def merge(customList, left, middle, right):
-    number1 = middle -left + 1
+    number1 = middle - left + 1
     number2 = right - middle
 
     leftList = [0] * (number1)
