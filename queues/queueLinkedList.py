@@ -13,6 +13,7 @@ class LinkedList:
 
     def __iter__(self):
         curNode = self.head
+
         while curNode:
             yield curNode
             curNode = curNode.next
@@ -23,6 +24,7 @@ class Queue:
 
     def enqueue(self, value):
         newNode = Node(value)
+
         if self.linkedList.head == None:
             self.linkedList.head = newNode
             self.linkedList.tail = newNode
@@ -41,11 +43,13 @@ class Queue:
             return "There is not any node in the Queue"
         else:
             tempNode = self.linkedList.head
+
             if self.linkedList.head == self.linkedList.tail:
                 self.linkedList.head = None
                 self.linkedList.tail = None
             else:
                 self.linkedList.head = self.linkedList.head.next
+
             return tempNode
 
     def peek(self):
@@ -70,4 +74,6 @@ custumQueue.enqueue(3)
 print(custumQueue)
 
 print(custumQueue.peek())
+
+custumQueue.dequeue()
 print(custumQueue)

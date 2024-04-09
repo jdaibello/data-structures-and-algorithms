@@ -32,6 +32,7 @@ class Queue:
         return ' '.join(values)
 
 customQueue = Queue()
+
 customQueue.enqueue(1)
 customQueue.enqueue(2)
 customQueue.enqueue(3)
