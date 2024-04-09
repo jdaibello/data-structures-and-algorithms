@@ -29,7 +29,9 @@ class Queue:
                 self.top += 1
                 if self.start == -1:
                     self.start = 0
+
             self.items[self.top] = value
+
             return "The element is inserted at the end of Queue"
 
     def dequeue(self):
@@ -38,6 +40,7 @@ class Queue:
         else:
             firstElement = self.items[self.start]
             start = self.start
+
             if self.start == self.top:
                 self.start = -1
                 self.top = -1
@@ -45,7 +48,9 @@ class Queue:
                 self.start = 0
             else:
                 self.start += 1
+
             self.items[start] = None
+
             return firstElement
 
     def peek(self):
@@ -70,5 +75,7 @@ customQueue.enqueue(2)
 customQueue.enqueue(3)
 print(customQueue)
 
-customQueue.delete()
+print(customQueue.peek())
+
+customQueue.dequeue()
 print(customQueue)
