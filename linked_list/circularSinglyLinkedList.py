@@ -211,7 +211,6 @@ class CircularSinglyLinkedList:
         return result
 
 linkedList = CircularSinglyLinkedList()
-print(linkedList)
 
 linkedList.append(10)
 linkedList.append(20)
@@ -230,7 +229,7 @@ print(linkedList)
 
 linkedList.traverse()
 
-print(linkedList.get(-1))
+print(linkedList.get(-1).value)
 print(linkedList.setValue(-1, 100))
 print(linkedList)
 

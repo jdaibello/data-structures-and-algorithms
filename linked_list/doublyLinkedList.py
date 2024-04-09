@@ -8,80 +8,87 @@ class Node:
         return str(self.value)
 
 class DoublyLinkedList:
-    def __init__(self, value):
-        new_node = Node(value)
-        self.head = new_node
-        self.tail = new_node
-        self.length = 1
-
     def __init__(self):
         self.head = None
         self.tail = None
         self.length = 0
 
     def append(self, value):
-        new_node = Node(value)
+        newNode = Node(value)
+
         if not self.head:
-            self.head = new_node
-            self.tail = new_node
+            self.head = newNode
+            self.tail = newNode
         else:
-            self.tail.next = new_node
-            new_node.prev = self.tail
-            self.tail = new_node
+            self.tail.next = newNode
+            newNode.prev = self.tail
+            self.tail = newNode
+
         self.length += 1
 
     def prepend(self, value):
-        new_node = Node(value)
+        newNode = Node(value)
+
         if not self.head:
-            self.head = new_node
-            self.tail = new_node
+            self.head = newNode
+            self.tail = newNode
         else:
-            new_node.next = self.head
-            self.head.prev = new_node
-            self.head = new_node
+            newNode.next = self.head
+            self.head.prev = newNode
+            self.head = newNode
+
         self.length += 1
 
     def traverse(self):
-        current_node = self.head
-        while current_node:
-            print(current_node.value)
-            current_node = current_node.next
+        currentNode = self.head
+
+        while currentNode:
+            print(currentNode.value)
+            currentNode = currentNode.next
 
     def reverseTraverse(self):
-        current_node = self.tail
-        while current_node:
-            print(current_node.value)
-            current_node = current_node.prev
+        currentNode = self.tail
+
+        while currentNode:
+            print(currentNode.value)
+            currentNode = currentNode.prev
 
     def search(self, target):
-        current_node = self.head
+        currentNode = self.head
         index = 0
-        while current_node:
-            if current_node.value == target:
+
+        while currentNode:
+            if currentNode.value == target:
                 return index
-            current_node = current_node.next
+
+            currentNode = currentNode.next
             index += 1
+
         return -1
 
     def get(self, index):
         if index < 0 or index >= self.length:
             return None
-
         if index < self.length // 2:
-            current_node = self.head
+            currentNode = self.head
+
             for _ in range(index):
-                current_node = current_node.next
+                currentNode = currentNode.next
         else:
-            current_node = self.tail
+            currentNode = self.tail
+
             for _ in range(self.length - 1, index, -1):
-                current_node = current_node.prev
-        return current_node
+                currentNode = currentNode.prev
+
+        return currentNode
 
     def setValue(self, index, value):
         node = self.get(index)
+
         if node:
             node.value = value
             return True
+
         return False
 
     def insert(self, index, value):
@@ -89,7 +96,7 @@ class DoublyLinkedList:
             print("Error: Index out of bounds.")
             return
 
-        new_node = Node(value)
+        newNode = Node(value)
 
         if index == 0:
             self.prepend(value)
@@ -98,61 +105,66 @@ class DoublyLinkedList:
             self.append(value)
             return
 
-        temp_node = self.get(index-1)
+        tempNode = self.get(index - 1)
 
-        new_node.next = temp_node.next
-        new_node.prev = temp_node
-        temp_node.next.prev = new_node
-        temp_node.next = new_node
-
+        newNode.next = tempNode.next
+        newNode.prev = tempNode
+        tempNode.next.prev = newNode
+        tempNode.next = newNode
         self.length += 1
 
     def popFirst(self):
         if not self.head:
             return None
 
-        popped_node = self.head
+        poppedNode = self.head
+
         if self.length == 1:
             self.head = None
             self.tail = None
         else:
             self.head = self.head.next
             self.head.prev = None
-            popped_node.next = None
+            poppedNode.next = None
+
         self.length -= 1
-        return popped_node
+
+        return poppedNode
 
     def pop(self):
         if not self.tail:
             return None
 
-        popped_node = self.tail
+        poppedNode = self.tail
+
         if self.length == 1:
             self.head = None
             self.tail = None
         else:
             self.tail = self.tail.prev
             self.tail.next = None
-            popped_node.prev = None  # Clearing the prev reference
+            poppedNode.prev = None  # Clearing the prev reference
+
         self.length -= 1
-        return popped_node
+
+        return poppedNode
 
     def remove(self, index):
         if index < 0 or index >= self.length:
             return None
-
         if index == 0:
             return self.popFirst()
         if index == self.length-1:
             return self.pop()
 
-        popped_node = self.get(index)
-        popped_node.prev.next = popped_node.next
-        popped_node.next.prev = popped_node.prev
-        popped_node.prev = None
-        popped_node.next = None
+        poppedNode = self.get(index)
+        poppedNode.prev.next = poppedNode.next
+        poppedNode.next.prev = poppedNode.prev
+        poppedNode.prev = None
+        poppedNode.next = None
         self.length -= 1
-        return popped_node
+
+        return poppedNode
 
     def deleteAll(self):
         self.head = None
@@ -160,30 +172,45 @@ class DoublyLinkedList:
         self.length = 0
 
     def __str__(self):
-        temp_node = self.head
+        tempNode = self.head
         result = ''
-        while temp_node:
-            result += str(temp_node.value)
-            if temp_node.next:
+
+        while tempNode:
+            result += str(tempNode.value)
+
+            if tempNode.next:
                 result += ' <-> '
-            temp_node = temp_node.next
+
+            tempNode = tempNode.next
+
         return result
 
 dll = DoublyLinkedList()
 
 dll.append(10)
 dll.append(20)
-dll.prepend(5)
-dll.prepend(44)
+dll.append(30)
+print(dll)
+
+dll.prepend(50)
+dll.prepend(60)
+print(dll)
+
+dll.traverse()
+dll.reverseTraverse()
+
+print(dll.search(10))
+print(dll.get(4).value)
+
+dll.setValue(0, 100)
 print(dll)
 
 dll.insert(2, 15)
 print(dll)
 
+dll.popFirst()
 dll.pop()
 print(dll)
 
-print(dll.get(2).value)
+dll.remove(2)
 print(dll)
-
-
