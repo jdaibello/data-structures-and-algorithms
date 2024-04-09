@@ -14,7 +14,7 @@ class Queue:
 
     def dequeue(self):
         if self.isEmpty():
-            return "The is not any element in the Queue"
+            return "There is no element in the Queue"
         else:
             return self.items.pop(0)
 
@@ -32,12 +32,12 @@ class Queue:
         return ' '.join(values)
 
 customQueue = Queue()
-
 customQueue.enqueue(1)
 customQueue.enqueue(2)
 customQueue.enqueue(3)
-
 print(customQueue)
-print(customQueue.peek())
 
-customQueue.delete()
+customQueue.dequeue()
+print(customQueue)
+
+print(customQueue.peek())
