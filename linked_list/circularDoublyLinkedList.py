@@ -4,82 +4,87 @@ class Node:
         self.next = None
         self.prev = None
 
+    def __str__(self):
+        return str(self.value)
+
 class CircularDoublyLinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
         self.length = 0
 
-    def constructor2(self, value):
-        new_node = Node(value)
-        new_node.next = new_node
-        new_node.prev = new_node
-
-        self.head = new_node
-        self.tail = new_node
-        self.length = 1
-
     def append(self, value):
-        new_node = Node(value)
+        newNode = Node(value)
+
         if self.length == 0:
-            self.head = new_node
-            self.tail = new_node
-            new_node.next = new_node
-            new_node.prev = new_node
+            self.head = newNode
+            self.tail = newNode
+            newNode.next = newNode
+            newNode.prev = newNode
         else:
-            self.tail.next = new_node
-            self.head.prev = new_node
-            new_node.prev = self.tail
-            new_node.next = self.head
-            self.tail = new_node
+            self.tail.next = newNode
+            self.head.prev = newNode
+            newNode.prev = self.tail
+            newNode.next = self.head
+            self.tail = newNode
+
         self.length += 1
 
     def prepend(self, value):
-        new_node = Node(value)
+        newNode = Node(value)
+
         if self.length == 0:
-            self.head = new_node
-            self.tail = new_node
-            new_node.next = new_node
-            new_node.prev = new_node
+            self.head = newNode
+            self.tail = newNode
+            newNode.next = newNode
+            newNode.prev = newNode
         else:
-            self.tail.next = new_node
-            self.head.prev = new_node
-            new_node.prev = self.tail
-            new_node.next = self.head
-            self.head = new_node
+            self.tail.next = newNode
+            self.head.prev = newNode
+            newNode.prev = self.tail
+            newNode.next = self.head
+            self.head = newNode
+
         self.length += 1
 
     def traverse(self):
         currentNode = self.head
+
         while currentNode:
             print(currentNode.value)
             currentNode = currentNode.next
+
             if currentNode == self.head:
                 break
 
     def reverseTraverse(self):
         currentNode = self.tail
+
         while currentNode:
             print(currentNode.value)
             currentNode = currentNode.prev
+
             if currentNode == self.tail:
                 break
 
     def search(self, target):
         current = self.head
+
         while current:
             if current.value == target:
                 return True
+
             current = current.next
+
             if current == self.head:
                 break
+
         return False
 
     def insert(self, index, value):
         if index < 0 or index > self.length:
             print("Error: Index out of bounds.")
             return
-
         if index == 0:
             self.prepend(value)
             return
@@ -87,13 +92,13 @@ class CircularDoublyLinkedList:
             self.append(value)
             return
 
-        new_node = Node(value)
+        newNode = Node(value)
         tempNode = self.get(index - 1)
 
-        new_node.next = tempNode.next
-        new_node.prev = tempNode
-        tempNode.next.prev = new_node
-        tempNode.next = new_node
+        newNode.next = tempNode.next
+        newNode.prev = tempNode
+        tempNode.next.prev = newNode
+        tempNode.next = newNode
 
         self.length += 1
 
@@ -102,12 +107,15 @@ class CircularDoublyLinkedList:
             return None
 
         currentNode = None
+
         if index < self.length // 2:
             currentNode = self.head
+
             for i in range(index):
                 currentNode = currentNode.next
         else:
             currentNode = self.tail
+
             for i in range(self.length - 1, index, -1):
                 currentNode = currentNode.prev
 
@@ -115,61 +123,67 @@ class CircularDoublyLinkedList:
 
     def setValue(self, index, value):
         temp = self.get(index)
+
         if temp:
             temp.value = value
             return True
+
         return False
 
     def popFirst(self):
         if self.length == 0:
             return None
 
-        popped_node = self.head
+        poppedNode = self.head
+
         if self.length == 1:
             self.head = None
             self.tail = None
         else:
             self.head = self.head.next
-            popped_node.next = None
-            popped_node.prev = None
+            poppedNode.next = None
+            poppedNode.prev = None
             self.head.prev = self.tail
             self.tail.next = self.head
 
         self.length -= 1
-        return popped_node
+
+        return poppedNode
 
     def pop(self):
         if self.length == 0:
             return None
 
-        popped_node = self.tail
+        poppedNode = self.tail
+
         if self.length == 1:
             self.head = None
             self.tail = None
         else:
             self.tail = self.tail.prev
-            popped_node.prev = None
-            popped_node.next = None
+            poppedNode.prev = None
+            poppedNode.next = None
             self.tail.next = self.head
             self.head.prev = self.tail
 
         self.length -= 1
-        return popped_node
+
+        return poppedNode
 
     def remove(self, index):
         if index < 0 or index >= self.length:
             return None
-
         if index == 0:
             return self.popFirst()
         if index == self.length - 1:
             return self.pop()
 
-        popped_node = self.get(index)
-        popped_node.prev.next = popped_node.next
-        popped_node.next.prev = popped_node.prev
+        poppedNode = self.get(index)
+        poppedNode.prev.next = poppedNode.next
+        poppedNode.next.prev = poppedNode.prev
         self.length -= 1
-        return popped_node
+
+        return poppedNode
 
     def deleteAll(self):
         self.head = None
@@ -179,16 +193,42 @@ class CircularDoublyLinkedList:
     def __str__(self):
         result = ''
         currentNode = self.head
+
         while currentNode:
             result += str(currentNode.value)
             currentNode = currentNode.next
+
             if currentNode == self.head: break
             result += ' <-> '
+
         return result
 
-new_ccll = CircularDoublyLinkedList()
+cdll = CircularDoublyLinkedList()
 
-new_ccll.append(10)
-new_ccll.append(20)
-new_ccll.append(30)
-print(new_ccll)
+cdll.append(10)
+cdll.append(20)
+cdll.append(30)
+cdll.append(40)
+print(cdll)
+
+cdll.prepend(90)
+print(cdll)
+
+cdll.traverse()
+cdll.reverseTraverse()
+
+print(cdll.search(10))
+print(cdll.get(0).value)
+
+print(cdll.setValue(2, 50))
+print(cdll)
+
+cdll.insert(1, 60)
+print(cdll)
+
+cdll.popFirst()
+cdll.pop()
+print(cdll)
+
+cdll.remove(1)
+print(cdll)
