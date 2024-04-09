@@ -19,11 +19,13 @@ def insertNode(rootNode, nodeValue):
             rootNode.rightChild = BinarySearchTreeNode(nodeValue)
         else:
             insertNode(rootNode.rightChild, nodeValue)
+
     return "The node has been successfully inserted"
 
 def preOrderTraversal(rootNode):
     if not rootNode:
         return
+
     print(rootNode.data)
     preOrderTraversal(rootNode.leftChild)
     preOrderTraversal(rootNode.rightChild)
@@ -31,6 +33,7 @@ def preOrderTraversal(rootNode):
 def inOrderTraversal(rootNode):
     if not rootNode:
         return
+
     inOrderTraversal(rootNode.leftChild)
     print(rootNode.data)
     inOrderTraversal(rootNode.rightChild)
@@ -38,6 +41,7 @@ def inOrderTraversal(rootNode):
 def postOrderTraversal(rootNode):
     if not rootNode:
         return
+
     postOrderTraversal(rootNode.leftChild)
     postOrderTraversal(rootNode.rightChild)
     print(rootNode.data)
@@ -48,11 +52,14 @@ def levelOrderTraversal(rootNode):
     else:
         customQueue = queue.Queue()
         customQueue.enqueue(rootNode)
+
         while not(customQueue.isEmpty()):
             root = customQueue.dequeue()
             print(root.value.data)
+
             if root.value.leftChild is not None:
                 customQueue.enqueue(root.value.leftChild)
+
             if root.value.rightChild is not None:
                 customQueue.enqueue(root.value.rightChild)
 
@@ -72,13 +79,16 @@ def searchNode(rootNode, nodeValue):
 
 def minValueNode(bstNode):
     current = bstNode
+
     while (current.leftChild is not None):
         current = current.leftChild
+
     return current
 
 def deleteNode(rootNode, nodeValue):
     if rootNode is None:
         return rootNode
+
     if nodeValue < rootNode.data:
         rootNode.leftChild = deleteNode(rootNode.leftChild, nodeValue)
     elif nodeValue > rootNode.data:
@@ -97,6 +107,7 @@ def deleteNode(rootNode, nodeValue):
         temp = minValueNode(rootNode.rightChild)
         rootNode.data = temp.data
         rootNode.rightChild = deleteNode(rootNode.rightChild, temp.data)
+
     return rootNode
 
 def deleteBST(rootNode):
@@ -108,13 +119,29 @@ def deleteBST(rootNode):
 newBinarySearchTree = BinarySearchTreeNode(None)
 
 insertNode(newBinarySearchTree, 70)
-insertNode(newBinarySearchTree,50)
-insertNode(newBinarySearchTree,90)
+insertNode(newBinarySearchTree, 50)
+insertNode(newBinarySearchTree, 90)
 insertNode(newBinarySearchTree, 30)
-insertNode(newBinarySearchTree,60)
-insertNode(newBinarySearchTree,80)
-insertNode(newBinarySearchTree,100)
-insertNode(newBinarySearchTree,20)
-insertNode(newBinarySearchTree,40)
+insertNode(newBinarySearchTree, 60)
+insertNode(newBinarySearchTree, 80)
+insertNode(newBinarySearchTree, 100)
+insertNode(newBinarySearchTree, 20)
+insertNode(newBinarySearchTree, 40)
 
+preOrderTraversal(newBinarySearchTree)
+print('***************')
+
+inOrderTraversal(newBinarySearchTree)
+print('***************')
+
+postOrderTraversal(newBinarySearchTree)
+print('***************')
+
+levelOrderTraversal(newBinarySearchTree)
+print('***************')
+
+searchNode(newBinarySearchTree, 80)
+print('***************')
+
+deleteNode(newBinarySearchTree, 20)
 levelOrderTraversal(newBinarySearchTree)
