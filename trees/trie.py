@@ -9,22 +9,29 @@ class Trie:
 
     def insertString(self, word):
         current = self.root
+
         for i in word:
-            ch = i
-            node = current.children.get(ch)
+            char = i
+            node = current.children.get(char)
+
             if node == None:
                 node = TrieNode()
-                current.children.update({ch:node})
+                current.children.update({char: node})
+
             current = node
+
         current.endOfString = True
         print("Successfully inserted")
 
     def searchString(self, word):
         currentNode = self.root
+
         for i in word:
             node = currentNode.children.get(i)
+
             if node == None:
                 return False
+
             currentNode = node
 
         if currentNode.endOfString == True:
@@ -33,8 +40,8 @@ class Trie:
             return False
 
 def deleteString(root, word, index):
-    ch = word[index]
-    currentNode = root.children.get(ch)
+    char = word[index]
+    currentNode = root.children.get(char)
     canThisNodeBeDeleted = False
 
     if len(currentNode.children) > 1:
@@ -46,16 +53,17 @@ def deleteString(root, word, index):
             currentNode.endOfString = False
             return False
         else:
-            root.children.pop(ch)
+            root.children.pop(char)
             return True
 
     if currentNode.endOfString == True:
         deleteString(currentNode, word, index+1)
         return False
 
-    canThisNodeBeDeleted = deleteString(currentNode, word, index+1)
+    canThisNodeBeDeleted = deleteString(currentNode, word, index + 1)
+
     if canThisNodeBeDeleted == True:
-        root.children.pop(ch)
+        root.children.pop(char)
         return True
     else:
         return False
@@ -64,6 +72,7 @@ newTrie = Trie()
 
 newTrie.insertString("App")
 newTrie.insertString("Appl")
-deleteString(newTrie.root, "App", 0)
+print('***************')
 
+deleteString(newTrie.root, "App", 0)
 print(newTrie.searchString("App"))
