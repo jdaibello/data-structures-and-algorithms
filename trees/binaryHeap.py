@@ -110,6 +110,9 @@ def extractNode(rootNode, heapType):
 
         return extractedNode
 
+def deleteEntireBinaryHeap(rootNode):
+    rootNode.customList = None
+
 newBinaryHeap = Heap(5)
 
 insertNode(newBinaryHeap, 4, "Max")
